@@ -3,5 +3,10 @@ import useGlobalReducer from "../hooks/useGlobalReducer";
 
 export const Test = () => {
   const { store, dispatch } = useGlobalReducer();
-  return <div>test</div>;
+  return (
+    <div>
+      <h1>{store.fname} {store.lname}</h1>
+      <p>Test</p>
+    </div>
+  );
 };
