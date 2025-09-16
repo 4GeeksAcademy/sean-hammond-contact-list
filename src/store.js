@@ -6,14 +6,14 @@ export const initialStore=()=>{
 }
 
 export default function storeReducer(store, action = {}) {
-  if (action.type = "set-name") {
+  if (action.type = "set-fname") {
     return{
       ...store,
       fname: action.payload
     }
   }
 
-  if (action.type = "set-name") {
+  if (action.type = "set-lname") {
     return{
       ...store,
       lname: action.payload

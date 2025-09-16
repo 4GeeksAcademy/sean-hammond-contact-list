@@ -14,8 +14,18 @@ export const Home = () => {
         <img src={rigoImageUrl} />
       </p>
       <Link to="/test">Go To Test Page</Link>
-      <button className="btn btn-primary" onClick={()=>setUser("Alex")} >{store.fname}</button>
-      <button className="btn btn-primary" onClick={()=>setUser("Ayala")} >{store.lname}</button>
+      <button className="btn btn-primary" onClick={()=>{
+        dispatch({
+          type: "set-fname", 
+          payload: "Alex"
+        })
+      }} >{store.fname}</button>
+      <button className="btn btn-primary" onClick={()=>{
+        dispatch({
+          type: "set-lname",
+          payload: "Ayala"
+        })
+      }} >{store.lname}</button>
     </div>
   );
 };
