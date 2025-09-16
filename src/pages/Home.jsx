@@ -14,18 +14,24 @@ export const Home = () => {
         <img src={rigoImageUrl} />
       </p>
       <Link to="/test">Go To Test Page</Link>
-      <button className="btn btn-primary" onClick={()=>{
+      <div className="m-3">
+        <button className="btn btn-primary" onClick={()=>{
         dispatch({
           type: "set-fname", 
           payload: "Alex"
         })
       }} >{store.fname}</button>
-      <button className="btn btn-primary" onClick={()=>{
+      </div>
+      
+      <div className="m-3">
+        <button className="btn btn-primary" onClick={()=>{
         dispatch({
           type: "set-lname",
           payload: "Ayala"
         })
       }} >{store.lname}</button>
+      </div>
+      
     </div>
   );
 };
