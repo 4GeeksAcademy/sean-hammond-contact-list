@@ -5,6 +5,7 @@ import { useState } from "react";
 
 export const Home = () => {
   const { store, dispatch } = useGlobalReducer();
+  const [user, setUser] = useState("Sean");
 
   return (
     <div className="text-center mt-5">
@@ -13,6 +14,8 @@ export const Home = () => {
         <img src={rigoImageUrl} />
       </p>
       <Link to="/test">Go To Test Page</Link>
+      <button className="btn btn-primary" onClick={()=>setUser("Alex")} >{store.fname}</button>
+      <button className="btn btn-primary" onClick={()=>setUser("Ayala")} >{store.lname}</button>
     </div>
   );
 };
