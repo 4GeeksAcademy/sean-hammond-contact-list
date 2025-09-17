@@ -1,7 +1,8 @@
 export const initialStore=()=>{
   return{
     fname: "Sean",
-    lname: "Hammond"
+    lname: "Hammond",
+    baseURL: "https://playground.4geeks.com/contact",
   }
 }
 
