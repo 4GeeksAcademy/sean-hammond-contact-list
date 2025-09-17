@@ -56,7 +56,7 @@ export const Home = () => {
       <p>
         <img src={rigoImageUrl} />
       </p>
-      <Link to="/test">Go To Test Page</Link>
+      <Link to="/createcontact">Create new contact</Link>
 
       <button
         onClick={() => {
