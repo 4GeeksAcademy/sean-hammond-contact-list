@@ -26,22 +26,6 @@ export const Home = () => {
       });
   };
 
-  const createContacts = () => {
-    let options = {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({
-        name: "user3",
-        phone: "phone3",
-        email: "email3",
-        address: "address3",
-      }),
-    };
-    fetch(store.baseURL + "/agendas/sean-hammond/contacts", options)
-      .then((resp) => resp.json())
-      .then((data) => console.log("Data of Contacts: ", data));
-  };
-
   useEffect(
     () => {
       createAgenda();
@@ -57,14 +41,6 @@ export const Home = () => {
         <img src={rigoImageUrl} />
       </p>
       <Link to="/createcontact">Create new contact</Link>
-
-      <button
-        onClick={() => {
-          createContacts();
-        }}
-      >
-        Create Contact
-      </button>
 
       <div className="m-3">
         <button
