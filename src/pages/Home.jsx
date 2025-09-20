@@ -35,12 +35,12 @@ export const Home = () => {
 
   return (
     <div className="text-center mt-5">
-      <h1>Hello Rigo!!</h1>
+      <h1>My Contacts</h1>
       {user}
-      <p>
-        <img src={rigoImageUrl} />
-      </p>
-      <Link to="/createcontact">Create new contact</Link>
+      <button className="btn btn-success text-white">
+        <Link to="/createcontact">Create new contact</Link>
+      </button>
+      
 
       <div className="m-3">
         <button

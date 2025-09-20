@@ -1,5 +1,6 @@
 import React from "react";
 import useGlobalReducer from "../hooks/useGlobalReducer";
+import { Link } from "react-router-dom";
 
 export const CreateContact = () => {
   const { store, dispatch } = useGlobalReducer();
@@ -49,16 +50,17 @@ export const CreateContact = () => {
       <br />
 
       <button
+        className="btn btn-primary text-white"
         onClick={() => {
           createContacts();
         }}
-        href="Home.jsx"
       >
         Save contact
       </button>
       <br />
 
-      <a href="Home.jsx">Back to contact list</a>
+      <Link to="/">Back to contact list</Link>
+
     </div>
   );
 };
