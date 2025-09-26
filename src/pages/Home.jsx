@@ -26,6 +26,29 @@ export const Home = () => {
       });
   };
 
+  const getContacts = () => {
+    fetch(baseURL + "/agendas/sean-hammond/contacts")
+      .then((resp) => {
+        return resp.json();
+      })
+      .then((data) => {
+        console.log("Get all contacts - data:", data.contacts);
+      });
+  };
+  
+  const putContacts = () => {
+    let options = {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        name: "user5",
+        phone: "phone5",
+        email: "email5",
+        address: "address5",
+      }),
+    };
+  };
+
   useEffect(
     () => {
       createAgenda();
@@ -40,7 +63,6 @@ export const Home = () => {
       <button className="btn btn-success text-white">
         <Link to="/createcontact">Create new contact</Link>
       </button>
-      
 
       <div className="m-3">
         <button
