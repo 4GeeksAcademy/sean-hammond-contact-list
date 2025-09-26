@@ -8,6 +8,15 @@ import { useState, useEffect } from "react";
 export const Home = () => {
   const { store, dispatch } = useGlobalReducer();
   const [user, setUser] = useState("Sean");
+  const [contactList, setContactList] = useState([
+    {
+      name: "Sean Hammond",
+      phone: "123-456-7980",
+      email: "e@mail.com",
+      address: "1600 Penn Road",
+      id: 1,
+    },
+  ]);
 
   const createAgenda = () => {
     let options = {
@@ -27,15 +36,13 @@ export const Home = () => {
   };
 
   const getContacts = () => {
-    fetch(baseURL + "/agendas/sean-hammond/contacts")
-      .then((resp) => {
-        return resp.json();
-      })
+    fetch(store.baseURL + "/agendas/sean-hammond/contacts")
+      .then((resp) => resp.json())
       .then((data) => {
-        console.log("Get all contacts - data:", data.contacts);
+        setContactList(data.contacts);
       });
   };
-  
+
   const putContacts = () => {
     let options = {
       method: "PUT",
@@ -52,6 +59,7 @@ export const Home = () => {
   useEffect(
     () => {
       createAgenda();
+      getContacts();
     },
     [] // the sq.brackets make useEffect is triggered every time page loads
   );
@@ -63,6 +71,16 @@ export const Home = () => {
       <button className="btn btn-success text-white">
         <Link to="/createcontact">Create new contact</Link>
       </button>
+
+      <ul>
+        {contactList.map((contactData) => {
+          return <li key={contactData.id}>{contactData.name}</li>;
+        })}
+      </ul>
+
+      <ul>
+        <li>{contactList[0].phone}</li>
+      </ul>
 
       <div className="m-3">
         <button
