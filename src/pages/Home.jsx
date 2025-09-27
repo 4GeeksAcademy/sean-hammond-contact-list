@@ -114,9 +114,7 @@ export const Home = () => {
                   {" " + contactData.name}
                 </span>
                 <span className="col-1">
-                  <Link to="/editcontact">
                     <i className="fa-solid fa-pencil editIcon"></i>
-                  </Link>
                 </span>
                 <span className="col-1">
                   <i
