@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 
 export const Home = () => {
   const { store, dispatch } = useGlobalReducer();
-  const [user, setUser] = useState("Sean");
+  // const [user, setUser] = useState("Sean");
   const [contactList, setContactList] = useState([
     {
       name: "Sean Hammond",
@@ -99,7 +99,7 @@ export const Home = () => {
   return (
     <div className="text-center mt-5">
       <h1>My Contacts</h1>
-      {user}
+      {/* {user} */}
       <button className="btn btn-success text-white">
         <Link to="/createcontact">Create new contact</Link>
       </button>
@@ -114,7 +114,33 @@ export const Home = () => {
                   {" " + contactData.name}
                 </span>
                 <span className="col-1">
-                    <i className="fa-solid fa-pencil editIcon"></i>
+                  <Link to="/createcontact">
+                  <i
+                    className="fa-solid fa-pencil editIcon"
+                    onClick={() => {
+                      dispatch({
+                        type: "set-indexOfContactToEdit",
+                        payload: contactList.length - 1,
+                      });
+                      dispatch({
+                        type: "nameToEdit",
+                        payload: contactData.name,
+                      });
+                      dispatch({
+                        type: "addressToEdit",
+                        payload: contactData.address,
+                      });
+                      dispatch({
+                        type: "phoneToEdit",
+                        payload: contactData.phone,
+                      });
+                      dispatch({
+                        type: "emailToEdit",
+                        payload: contactData.email,
+                      });
+                    }}
+                  ></i>
+                  </Link>
                 </span>
                 <span className="col-1">
                   <i
@@ -144,7 +170,8 @@ export const Home = () => {
         })}
       </ul>
 
-      <div className="m-3">
+      {/* Tutorial on dispatch function: */}
+      {/* <div className="m-3">
         <button
           className="btn btn-primary"
           onClick={() => {
@@ -170,7 +197,7 @@ export const Home = () => {
         >
           {store.lname}
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };

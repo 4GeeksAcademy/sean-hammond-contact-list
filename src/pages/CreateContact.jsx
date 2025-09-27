@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 export const CreateContact = () => {
   const { store, dispatch } = useGlobalReducer();
 
-  const [newContactFullName, setNewContactFullName] = useState("");
-  const [newContactEmail, setNewContactEmail] = useState("");
-  const [newContactPhone, setNewContactPhone] = useState("");
-  const [newContactAddress, setNewContactAddress] = useState("");
+  const [newContactFullName, setNewContactFullName] = useState(store.nameToEdit);
+  const [newContactEmail, setNewContactEmail] = useState(store.emailToEdit);
+  const [newContactPhone, setNewContactPhone] = useState(store.phoneToEdit);
+  const [newContactAddress, setNewContactAddress] = useState(store.addressToEdit);
 
   const createContacts = () => {
     setNewContactFullName("");
@@ -31,7 +31,7 @@ export const CreateContact = () => {
   };
 
   return (
-    <div>
+    <div className="container">
       <h1>Add a new contact</h1>
 
       {/* Name: */}

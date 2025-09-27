@@ -1,7 +1,12 @@
 export const initialStore=()=>{
   return{
-    fname: "Sean",
-    lname: "Hammond",
+    // fname: "Sean",
+    // lname: "Hammond",
+    indexOfContactToEdit: 0,
+    nameToEdit: "",
+    addressToEdit: "",
+    phoneToEdit: "",
+    emailToEdit: "",
     baseURL: "https://playground.4geeks.com/contact",
   }
 }
