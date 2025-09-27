@@ -5,6 +5,16 @@ import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
+const deleteContact = (contactId) => {
+  const options = {
+    method: "DELETE",
+    headers: { "content-type": "application/json" },
+  };
+  fetch(store.baseURL + "/agendas/sean-hammond/contacts/" + contactId, options)
+    .then((response) => response.json())
+    .then((data) => console.log("Deleted contact: ", data));
+};
+
 export const Home = () => {
   const { store, dispatch } = useGlobalReducer();
   const [user, setUser] = useState("Sean");
@@ -74,7 +84,39 @@ export const Home = () => {
 
       <ul>
         {contactList.map((contactData) => {
-          return <li key={contactData.id}>{contactData.name}</li>;
+          return (
+            <li key={contactData.id}>
+              <h2 className="row">
+                <span className="col-10">
+                  <i className="fa-regular fa-circle-user"></i>
+                  {" " + contactData.name}
+                </span>
+                <span className="col-1">
+                  <i className="fa-solid fa-pencil editIcon"></i>
+                </span>
+                <span className="col-1">
+                  <i
+                    className="fa-solid fa-trash-can editIcon"
+                    onClick={() => {
+                      deleteContact(contactData.id);
+                    }}
+                  ></i>
+                </span>
+              </h2>
+              <h3>
+                <i className="fa-solid fa-location-dot"></i>
+                {" " + contactData.address}
+              </h3>
+              <h3>
+                <i className="fa-solid fa-phone"></i>
+                {" " + contactData.phone}
+              </h3>
+              <h3>
+                <i className="fa-solid fa-envelope"></i>
+                {" " + contactData.email}
+              </h3>
+            </li>
+          );
         })}
       </ul>
 
