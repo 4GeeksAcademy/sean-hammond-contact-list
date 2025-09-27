@@ -20,8 +20,8 @@ export const CreateContact = () => {
       headers: { "content-type": "application/json" },
       body: JSON.stringify({
         name: newContactFullName,
-        phone: newContactEmail,
-        email: newContactPhone,
+        phone: newContactPhone,
+        email: newContactEmail,
         address: newContactAddress,
       }),
     };

@@ -5,16 +5,6 @@ import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-const deleteContact = (contactId) => {
-  const options = {
-    method: "DELETE",
-    headers: { "content-type": "application/json" },
-  };
-  fetch(store.baseURL + "/agendas/sean-hammond/contacts/" + contactId, options)
-    .then((response) => response.json())
-    .then((data) => console.log("Deleted contact: ", data));
-};
-
 export const Home = () => {
   const { store, dispatch } = useGlobalReducer();
   const [user, setUser] = useState("Sean");
@@ -45,11 +35,43 @@ export const Home = () => {
       });
   };
 
+  const createDemoContacts = () => {
+    let options = {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        name: "Your name",
+        phone: "Your phone",
+        email: "Your email",
+        address: "Your address",
+      }),
+    };
+    fetch(store.baseURL + "/agendas/sean-hammond/contacts", options)
+      .then((resp) => resp.json())
+      .then((data) => console.log("Data of Contacts: ", data));
+  };
+
   const getContacts = () => {
     fetch(store.baseURL + "/agendas/sean-hammond/contacts")
       .then((resp) => resp.json())
       .then((data) => {
         setContactList(data.contacts);
+      });
+  };
+
+const deleteContact = (contactId) => {
+    const options = {
+      method: "DELETE",
+      headers: { "content-type": "application/json" },
+    };
+    fetch(
+      store.baseURL + "/agendas/sean-hammond/contacts/" + contactId,
+      options
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setContactList(data.contacts);
+        getContacts();
       });
   };
 
@@ -98,7 +120,9 @@ export const Home = () => {
                   <i
                     className="fa-solid fa-trash-can editIcon"
                     onClick={() => {
+                      contactList.length == 1 && createDemoContacts();
                       deleteContact(contactData.id);
+                      window.location.reload();
                     }}
                   ></i>
                 </span>
@@ -118,10 +142,6 @@ export const Home = () => {
             </li>
           );
         })}
-      </ul>
-
-      <ul>
-        <li>{contactList[0].phone}</li>
       </ul>
 
       <div className="m-3">
