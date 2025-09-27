@@ -1,5 +1,7 @@
 // Import necessary components and functions from react-router-dom.
 
+// Root root root to the home page, if you forget it's a shame! Ha ha ha!
+
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -10,6 +12,7 @@ import { Home } from "./pages/Home";
 import { Single } from "./pages/Single";
 import { Demo } from "./pages/Demo";
 import { CreateContact } from "./pages/CreateContact";
+import { EditContact } from "./pages/CreateContact";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -28,6 +31,7 @@ export const router = createBrowserRouter(
       {/* Dynamic route for single items */}
       <Route path="/demo" element={<Demo />} />
       <Route path="/createcontact" element={<CreateContact />} />
+      <Route path="/editcontact" element={<EditContact />} />
     </Route>
   )
 );

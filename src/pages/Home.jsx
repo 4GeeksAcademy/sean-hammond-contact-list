@@ -59,7 +59,7 @@ export const Home = () => {
       });
   };
 
-const deleteContact = (contactId) => {
+  const deleteContact = (contactId) => {
     const options = {
       method: "DELETE",
       headers: { "content-type": "application/json" },
@@ -114,7 +114,9 @@ const deleteContact = (contactId) => {
                   {" " + contactData.name}
                 </span>
                 <span className="col-1">
-                  <i className="fa-solid fa-pencil editIcon"></i>
+                  <Link to="/editcontact">
+                    <i className="fa-solid fa-pencil editIcon"></i>
+                  </Link>
                 </span>
                 <span className="col-1">
                   <i
